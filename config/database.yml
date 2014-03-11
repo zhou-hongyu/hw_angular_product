@@ -1,0 +1,16 @@
+defaults: &defaults
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *defaults
+  database: angularProducts_development
+
+test:
+  <<: *defaults
+  database: angularProducts_test
+
+production:
+  <<: *defaults
+  database: angularProducts_production
