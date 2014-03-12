@@ -31,13 +31,13 @@ angular.module('StoreFront').factory('productData',['$http', function($http){
     }; // end of productData method
 
     productData.createProduct = function(newProduct){
-        var data;
+        var new_data;
         if (newProduct.newProductName === '' || newProduct.newProductPricd === '' || newProduct.newProductDescription === '') {
             alert('Neither the Name nor the Price nor the Description are allowed to be left blank.');
             return false;
         }
 
-        data = {
+        new_data = {
             new_product: {
               name: newProduct.newProductName,
               price: newProduct.newProductPrice,
@@ -45,8 +45,8 @@ angular.module('StoreFront').factory('productData',['$http', function($http){
             }
         };
 
-        $http.post('./products.json', data).success(function(data){
-            productData.data.products.push(data);
+        $http.post('./products.json', new_data).success(function(new_data){
+            productData.data.products.push(new_data);
             return console.log("Successfully created product.");
         }).error(function(){
             return console.error("Failed to create product.");

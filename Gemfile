@@ -17,8 +17,6 @@ gem 'coffee-rails', '~> 4.0.0'
 
 gem 'angularjs-rails'
 
-gem 'quiet_assets'
-
 gem 'jquery-rails'
 
 gem 'active_model_serializers'
