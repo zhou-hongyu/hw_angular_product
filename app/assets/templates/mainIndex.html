@@ -1,11 +1,14 @@
 <!-- The "default" view. Will show all the products -->
 <h1 class='text-center'>Products</h1>
 
+
+<button ng-click="navNewProduct()">Create A New Product</button></br>
+
+
 <!-- search box that's used for filtering -->
 <input type='text' ng-model='search.$'><br>
 
 <!-- add new product -->
-Name: <input type='text'> Price: <input type='text'> Description: <input type='text'> <button>Add Product</button>
 
 <!-- Listing of all the Products -->
 <div class="product-listing" ng-repeat="product in data.products | filter:search">

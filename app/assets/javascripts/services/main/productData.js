@@ -29,6 +29,30 @@ angular.module('StoreFront').factory('productData',['$http', function($http){
                 console.log('Failed to load product ' + productId);
             });
     }; // end of productData method
+
+    productData.createProduct = function(newProduct){
+        var data;
+        if (newProduct.newProductName === '' || newProduct.newProductPricd === '' || newProduct.newProductDescription === '') {
+            alert('Neither the Name nor the Price nor the Description are allowed to be left blank.');
+            return false;
+        }
+
+        data = {
+            new_product: {
+              name: newProduct.newProductName,
+              price: newProduct.newProductPrice,
+              description: newProduct.newProductDescription
+            }
+        };
+
+        $http.post('./products.json', data).success(function(data){
+            productData.data.products.push(data);
+            return console.log("Successfully created product.");
+        }).error(function(){
+            return console.error("Failed to create product.");
+        });
+        return true;
+    };
     // return the productData
     return productData;
 }]);

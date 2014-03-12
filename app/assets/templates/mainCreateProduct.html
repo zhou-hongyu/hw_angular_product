@@ -1,0 +1,15 @@
+<div class="container" style="margin-top: 40px">
+  <h1 class="text-center">Create new product</h1>
+  <form>
+    <fieldset>
+      <label><strong>Name</strong></label>
+      <input class="span12" ng-model="formData.newProductName" placeholder="New Product" type="text" maxlength="250">
+      <label><strong>Price</strong></label>
+      <input class="span12" ng-model="formData.newProductPrice" type="text" maxlength="250">
+      <label><strong>Description</strong></label>
+      <input class="span12" ng-model="formData.newProductDescription"></input>
+      <button class="btn btn-primary" ng-click="createProduct()">Create</button>
+    </fieldset>
+  </form>
+</div>
+

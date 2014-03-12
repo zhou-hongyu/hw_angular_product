@@ -8,7 +8,7 @@ var IndexCtrl = function($scope, $location, $http, productData){
     productData.loadProducts(function(data){
         $scope.data.products = data.products;
     });
-    
+
     $scope.viewPost = function(productId){
         $location.url('/product/' + productId);
     };
