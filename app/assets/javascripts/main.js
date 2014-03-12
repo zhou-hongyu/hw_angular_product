@@ -33,25 +33,25 @@ StoreFront.config(['$routeProvider', function($routeProvider){
 StoreFront.config(["$httpProvider", function(provider){
   provider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
 
-  // var interceptor = ['$location', '$rootScope', '$q', function($location, $rootScope, $q) {
-  //   function success(response) {
-  //     console.log("Intercepted a successful request");
-  //     return response;
-  //   };
+  var interceptor = ['$location', '$rootScope', '$q', function($location, $rootScope, $q) {
+    function success(response) {
+      console.log("Intercepted a successful request");
+      return response;
+    };
 
-  //   function error(response) {
-  //     if (response.status == 401) {
-  //       console.log("Intercepted a failed, 401,request");
-  //       $rootScope.$broadcast('event:unauthorized');
-  //       $location.path('login');
-  //       return response;
-  //     };
-  //     return $q.reject(response);
-  //   };
+    function error(response) {
+      if (response.status == 401) {
+        console.log("Intercepted a failed, 401,request");
+        $rootScope.$broadcast('event:unauthorized');
+        $location.path('login');
+        return response;
+      };
+      return $q.reject(response);
+    };
 
-  //   return function(promise) {
-  //     return promise.then(success, error);
-  //   };
-  // }];
-  // provider.responseInterceptors.push(interceptor);
+    return function(promise) {
+      return promise.then(success, error);
+    };
+  }];
+  provider.responseInterceptors.push(interceptor);
 }]);
